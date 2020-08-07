@@ -51,7 +51,7 @@ Variable    | Type
 
 Create a scatter plot of life expectancy versus year for the United States.
 
-```{r ex2_part1, eval=FALSE}
+```{r ex2_part1, eval=FALSE }
 gap_usa <- gap %>% 
   filter(country == "United States")
 
@@ -65,7 +65,9 @@ Create a plot of life expectancy verses GDP per capita for Canada. Set the
 color of the points to be red and connect them with a solid black line.
 
 ```{r ex2_part2}
-# create plot here
+gap_canada = gap %>% filter(country == "Canada")
+
+ggplot(data = gap_canada, mapping = aes(x = gdpPercap, y = lifeExp)) + geom_point(color = "red") + geom_line()
 ```
 
 **Part 3**
@@ -74,7 +76,10 @@ Create a scatter plot of life expectancy versus GDP per capita based on all
 countries in Africa in 1992. Set the color to be purple.
 
 ```{r ex2_part3}
-# create plot here
+gap_africa_1992 = gap %>% filter(continent == "Africa", year == 1992)
+
+ggplot(data = gap_africa_1992, mapping = aes(x = gdpPercap, y = lifeExp)) + 
+   geom_point(color = "purple")
 ```
 
 ### Exercise 3
@@ -97,7 +102,11 @@ two continents.
    be set for each level of the variable `continent`.
 
 ```{r ex3_part1}
-# create plot here
+gap_africa_europe = gap %>% filter(continent %in% c("Africa", "Europe"), year 
+   == 1992)
+
+ggplot(data = gap_africa_europe, mapping = aes(x = gdpPercap, y = lifeExp, 
+   color = continent)) + geom_point()
 ```
 
 **Part 2**
@@ -114,7 +123,11 @@ Fill the boxplots with color `darkgreen`.
 3. Use `geom_boxplot()` and set the fill to `darkgreen`.
 
 ```{r ex3_part2}
-# create plot here
+gap_2007 = gap %>% filter(year == 2007)
+
+ggplot(data = gap_2007, aes(x = continent, y = gdpPercap)) + 
+   geom_boxplot(fill = "darkgreen")
+
 ```
 
 
